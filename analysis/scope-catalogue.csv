@@ -1,0 +1,176 @@
+scope,api,readonly,description
+https://mail.google.com/,script:v1,False,"Read, compose, send, and permanently delete all your email from Gmail"
+https://www.google.com/calendar/feeds,script:v1,False,"See, edit, share, and permanently delete all the calendars you can access using Google Calendar"
+https://www.google.com/m8/feeds,script:v1,False,"See, edit, download, and permanently delete your contacts"
+https://www.googleapis.com/auth/admin.chrome.printers,admin:directory_v1,False,"See, add, edit, and permanently delete the printers that your organization can use with Chrome"
+https://www.googleapis.com/auth/admin.chrome.printers.readonly,admin:directory_v1,True,See the printers that your organization can use with Chrome
+https://www.googleapis.com/auth/admin.datatransfer,admin:datatransfer_v1,False,View and manage data transfers between users in your organization
+https://www.googleapis.com/auth/admin.datatransfer.readonly,admin:datatransfer_v1,True,View data transfers between users in your organization
+https://www.googleapis.com/auth/admin.directory.customer,admin:directory_v1,False,View and manage customer related information
+https://www.googleapis.com/auth/admin.directory.customer.readonly,admin:directory_v1,True,View customer related information
+https://www.googleapis.com/auth/admin.directory.device.chromeos,admin:directory_v1,False,View and manage your ChromeOS devices' metadata
+https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly,admin:directory_v1,True,View your ChromeOS devices' metadata
+https://www.googleapis.com/auth/admin.directory.device.mobile,admin:directory_v1,False,View and manage your mobile devices' metadata
+https://www.googleapis.com/auth/admin.directory.device.mobile.action,admin:directory_v1,False,Manage your mobile devices by performing administrative tasks
+https://www.googleapis.com/auth/admin.directory.device.mobile.readonly,admin:directory_v1,True,View your mobile devices' metadata
+https://www.googleapis.com/auth/admin.directory.domain,admin:directory_v1,False,View and manage the provisioning of domains for your customers
+https://www.googleapis.com/auth/admin.directory.domain.readonly,admin:directory_v1,True,View domains related to your customers
+https://www.googleapis.com/auth/admin.directory.group,script:v1,False,View and manage the provisioning of groups on your domain
+https://www.googleapis.com/auth/admin.directory.group.member,admin:directory_v1,False,View and manage group subscriptions on your domain
+https://www.googleapis.com/auth/admin.directory.group.member.readonly,admin:directory_v1,True,View group subscriptions on your domain
+https://www.googleapis.com/auth/admin.directory.group.readonly,admin:directory_v1,True,View groups on your domain
+https://www.googleapis.com/auth/admin.directory.orgunit,admin:directory_v1,False,View and manage organization units on your domain
+https://www.googleapis.com/auth/admin.directory.orgunit.readonly,admin:directory_v1,True,View organization units on your domain
+https://www.googleapis.com/auth/admin.directory.resource.calendar,admin:directory_v1,False,View and manage the provisioning of calendar resources on your domain
+https://www.googleapis.com/auth/admin.directory.resource.calendar.readonly,admin:directory_v1,True,View calendar resources on your domain
+https://www.googleapis.com/auth/admin.directory.rolemanagement,admin:directory_v1,False,Manage delegated admin roles for your domain
+https://www.googleapis.com/auth/admin.directory.rolemanagement.readonly,admin:directory_v1,True,View delegated admin roles for your domain
+https://www.googleapis.com/auth/admin.directory.user,script:v1,False,View and manage the provisioning of users on your domain
+https://www.googleapis.com/auth/admin.directory.user.alias,admin:directory_v1,False,View and manage user aliases on your domain
+https://www.googleapis.com/auth/admin.directory.user.alias.readonly,admin:directory_v1,True,View user aliases on your domain
+https://www.googleapis.com/auth/admin.directory.user.readonly,admin:directory_v1,True,See info about users on your domain
+https://www.googleapis.com/auth/admin.directory.user.security,admin:directory_v1,False,Manage data access permissions for users on your domain
+https://www.googleapis.com/auth/admin.directory.userschema,admin:directory_v1,False,View and manage the provisioning of user schemas on your domain
+https://www.googleapis.com/auth/admin.directory.userschema.readonly,admin:directory_v1,True,View user schemas on your domain
+https://www.googleapis.com/auth/admin.reports.audit.readonly,admin:reports_v1,True,View audit reports for your Google Workspace domain
+https://www.googleapis.com/auth/admin.reports.usage.readonly,admin:reports_v1,True,View usage reports for your Google Workspace domain
+https://www.googleapis.com/auth/apps.alerts,alertcenter:v1beta1,False,"See and delete your domain's Google Workspace alerts, and send alert feedback"
+https://www.googleapis.com/auth/apps.groups.settings,groupssettings:v1,False,View and manage the settings of a G Suite group
+https://www.googleapis.com/auth/apps.licensing,licensing:v1,False,View and manage Google Workspace licenses for your domain
+https://www.googleapis.com/auth/calendar,calendar:v3,False,"See, edit, share, and permanently delete all the calendars you can access using Google Calendar"
+https://www.googleapis.com/auth/calendar.acls,calendar:v3,False,See and change the sharing permissions of Google calendars you own
+https://www.googleapis.com/auth/calendar.acls.readonly,calendar:v3,True,See the sharing permissions of Google calendars you own
+https://www.googleapis.com/auth/calendar.app.created,calendar:v3,False,"Make secondary Google calendars, and see, create, change, and delete events on them"
+https://www.googleapis.com/auth/calendar.calendarlist,calendar:v3,False,"See, add, and remove Google calendars you’re subscribed to"
+https://www.googleapis.com/auth/calendar.calendarlist.readonly,calendar:v3,True,See the list of Google calendars you’re subscribed to
+https://www.googleapis.com/auth/calendar.calendars,calendar:v3,False,"See and change the properties of Google calendars you have access to, and create secondary calendars"
+https://www.googleapis.com/auth/calendar.calendars.readonly,calendar:v3,True,"See the title, description, default time zone, and other properties of Google calendars you have access to"
+https://www.googleapis.com/auth/calendar.events,calendar:v3,False,View and edit events on all your calendars
+https://www.googleapis.com/auth/calendar.events.freebusy,calendar:v3,False,See the availability on Google calendars you have access to
+https://www.googleapis.com/auth/calendar.events.owned,calendar:v3,False,"See, create, change, and delete events on Google calendars you own"
+https://www.googleapis.com/auth/calendar.events.owned.readonly,calendar:v3,True,See the events on Google calendars you own
+https://www.googleapis.com/auth/calendar.events.public.readonly,calendar:v3,True,See the events on public calendars
+https://www.googleapis.com/auth/calendar.events.readonly,calendar:v3,True,View events on all your calendars
+https://www.googleapis.com/auth/calendar.freebusy,calendar:v3,False,View your availability in your calendars
+https://www.googleapis.com/auth/calendar.readonly,calendar:v3,True,See and download any calendar you can access using your Google Calendar
+https://www.googleapis.com/auth/calendar.settings.readonly,calendar:v3,True,View your Calendar settings
+https://www.googleapis.com/auth/chat.app.all.memberships.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see all members in Google Chat spaces and conversations throughout your Workspace organization, even when the Chat app isn't a member"
+https://www.googleapis.com/auth/chat.app.all.messages.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see all messages and reactions throughout your Workspace organization, even when the Chat app isn't a member of a space or conversation"
+https://www.googleapis.com/auth/chat.app.all.spaces.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see metadata about all spaces and conversations in Google Chat throughout your Workspace organization, even when the Chat app isn't a member"
+https://www.googleapis.com/auth/chat.app.all.users.readstate.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see the last read time for all users in all spaces and conversations throughout your Workspace organization, even when the Chat app isn't a member."
+https://www.googleapis.com/auth/chat.app.memberships,workspaceevents:v1,False,"On their own behalf, apps in Google Chat can see, add, update, and remove members from conversations and spaces"
+https://www.googleapis.com/auth/chat.app.memberships.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see members of conversations and spaces"
+https://www.googleapis.com/auth/chat.app.messages.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see all messages and their associated reactions and message content"
+https://www.googleapis.com/auth/chat.app.spaces,workspaceevents:v1,False,"On their own behalf, apps in Google Chat can create conversations and spaces and see or update their metadata (including history settings and access settings)"
+https://www.googleapis.com/auth/chat.app.spaces.readonly,workspaceevents:v1,True,"On their own behalf, apps in Google Chat can see conversations and spaces and their metadata (including history settings and access settings)"
+https://www.googleapis.com/auth/chat.bot,workspaceevents:v1,False,Private Service: https://www.googleapis.com/auth/chat.bot
+https://www.googleapis.com/auth/chat.memberships,workspaceevents:v1,False,"See, add, update, and remove members from conversations and spaces in Google Chat"
+https://www.googleapis.com/auth/chat.memberships.readonly,workspaceevents:v1,True,View members in Google Chat conversations.
+https://www.googleapis.com/auth/chat.messages,workspaceevents:v1,False,"See, compose, send, update, and delete messages as well as their message content; add, see, and delete reactions to messages."
+https://www.googleapis.com/auth/chat.messages.reactions,workspaceevents:v1,False,"See, add, and delete reactions as well as their reaction content to messages in Google Chat"
+https://www.googleapis.com/auth/chat.messages.reactions.readonly,workspaceevents:v1,True,View reactions as well as their reaction content to messages in Google Chat
+https://www.googleapis.com/auth/chat.messages.readonly,workspaceevents:v1,True,See messages as well as their reactions and message content in Google Chat
+https://www.googleapis.com/auth/chat.spaces,workspaceevents:v1,False,Create conversations and spaces and see or update metadata (including history settings and access settings) in Google Chat
+https://www.googleapis.com/auth/chat.spaces.readonly,workspaceevents:v1,True,View chat and spaces in Google Chat
+https://www.googleapis.com/auth/chat.users.availability,workspaceevents:v1,False,See and change your availability status in Google Chat.
+https://www.googleapis.com/auth/chat.users.availability.readonly,workspaceevents:v1,True,See your availability status in Google Chat.
+https://www.googleapis.com/auth/chat.users.readstate,workspaceevents:v1,False,View and modify last read time for Google Chat conversations
+https://www.googleapis.com/auth/chat.users.readstate.readonly,workspaceevents:v1,True,View last read time for Google Chat conversations
+https://www.googleapis.com/auth/chrome.management.appdetails.readonly,chromemanagement:v1,True,See detailed information about apps installed on Chrome browsers and devices managed by your organization
+https://www.googleapis.com/auth/chrome.management.policy,chromepolicy:v1,False,"See, edit, create or delete policies applied to ChromeOS and Chrome Browsers managed within your organization"
+https://www.googleapis.com/auth/chrome.management.policy.readonly,chromepolicy:v1,True,See policies applied to ChromeOS and Chrome Browsers managed within your organization
+https://www.googleapis.com/auth/chrome.management.profiles,chromemanagement:v1,False,"See, edit, delete, and take other necessary actions on Chrome browser profiles managed by your organization"
+https://www.googleapis.com/auth/chrome.management.profiles.readonly,chromemanagement:v1,True,See Chrome browser profiles managed by your organization
+https://www.googleapis.com/auth/chrome.management.reports.readonly,chromemanagement:v1,True,See reports about devices and Chrome browsers managed within your organization
+https://www.googleapis.com/auth/chrome.management.securityinsights,chromemanagement:v1,False,Turn Chrome Security Insights on and off and view the data it generates
+https://www.googleapis.com/auth/chrome.management.securityinsights.readonly,chromemanagement:v1,True,See Chrome Security Insights reports
+https://www.googleapis.com/auth/chrome.management.telemetry.readonly,chromemanagement:v1,True,See basic device and telemetry information collected from ChromeOS devices or users managed within your organization
+https://www.googleapis.com/auth/cloud-identity.allowlisteddomains,cloudidentity:v1,False,See and edit allowlisted domains in your Cloud Identity Organization
+https://www.googleapis.com/auth/cloud-identity.allowlisteddomains.readonly,cloudidentity:v1,True,See allowlisted domains in your Cloud Identity Organization
+https://www.googleapis.com/auth/cloud-identity.devices,cloudidentity:v1,False,Private Service: https://www.googleapis.com/auth/cloud-identity.devices
+https://www.googleapis.com/auth/cloud-identity.devices.lookup,cloudidentity:v1,False,See your device details
+https://www.googleapis.com/auth/cloud-identity.devices.readonly,cloudidentity:v1,True,Private Service: https://www.googleapis.com/auth/cloud-identity.devices.readonly
+https://www.googleapis.com/auth/cloud-identity.groups,cloudidentity:v1,False,"See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group"
+https://www.googleapis.com/auth/cloud-identity.groups.readonly,cloudidentity:v1,True,"See any Cloud Identity Groups that you can access, including group members and their emails"
+https://www.googleapis.com/auth/cloud-identity.inboundsso,cloudidentity:v1,False,See and edit all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your Cloud Identity Organization.
+https://www.googleapis.com/auth/cloud-identity.inboundsso.readonly,cloudidentity:v1,True,See all of the Inbound SSO profiles and their assignments to any Org Units or Google Groups in your Cloud Identity Organization.
+https://www.googleapis.com/auth/cloud-identity.policies,cloudidentity:v1,False,See and edit policies in your Cloud Identity Organization.
+https://www.googleapis.com/auth/cloud-identity.policies.readonly,cloudidentity:v1,True,See policies in your Cloud Identity Organization.
+https://www.googleapis.com/auth/cloud-platform,cloudidentity:v1,False,"See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account."
+https://www.googleapis.com/auth/cloud_search,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.debug,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.indexing,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.query,cloudsearch:v1,False,Search your organization's data in the Cloud Search index
+https://www.googleapis.com/auth/cloud_search.settings,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.settings.indexing,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.settings.query,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.stats,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/cloud_search.stats.indexing,cloudsearch:v1,False,Index and serve your organization's data with Cloud Search
+https://www.googleapis.com/auth/contacts,people:v1,False,"See, edit, download, and permanently delete your contacts"
+https://www.googleapis.com/auth/contacts.other.readonly,people:v1,True,"See and download contact info automatically saved in your ""Other contacts"""
+https://www.googleapis.com/auth/contacts.readonly,people:v1,True,See and download your contacts
+https://www.googleapis.com/auth/directory.readonly,people:v1,True,See and download your organization's Google Workspace directory
+https://www.googleapis.com/auth/documents,script:v1,False,"See, edit, create, and delete all your Google Docs documents"
+https://www.googleapis.com/auth/documents.readonly,docs:v1,True,See all your Google Docs documents
+https://www.googleapis.com/auth/drive,workspaceevents:v1,False,"See, edit, create, and delete all of your Google Drive files"
+https://www.googleapis.com/auth/drive.activity,driveactivity:v2,False,View and add to the activity record of files in your Google Drive
+https://www.googleapis.com/auth/drive.activity.readonly,driveactivity:v2,True,View the activity record of files in your Google Drive
+https://www.googleapis.com/auth/drive.appdata,drive:v3,False,"See, create, and delete its own configuration data in your Google Drive"
+https://www.googleapis.com/auth/drive.apps.readonly,drive:v3,True,View your Google Drive apps
+https://www.googleapis.com/auth/drive.file,workspaceevents:v1,False,"See, edit, create, and delete only the specific Google Drive files you use with this app"
+https://www.googleapis.com/auth/drive.meet.readonly,drive:v3,True,See and download your Google Drive files that were created or edited by Google Meet.
+https://www.googleapis.com/auth/drive.metadata,workspaceevents:v1,False,View and manage metadata of files in your Google Drive
+https://www.googleapis.com/auth/drive.metadata.readonly,workspaceevents:v1,True,See information about your Google Drive files
+https://www.googleapis.com/auth/drive.photos.readonly,drive:v3,True,"View the photos, videos and albums in your Google Photos"
+https://www.googleapis.com/auth/drive.readonly,workspaceevents:v1,True,See and download all your Google Drive files
+https://www.googleapis.com/auth/drive.scripts,drive:v3,False,Modify your Google Apps Script scripts' behavior
+https://www.googleapis.com/auth/ediscovery,vault:v1,False,Manage your eDiscovery data
+https://www.googleapis.com/auth/ediscovery.readonly,vault:v1,True,View your eDiscovery data
+https://www.googleapis.com/auth/forms,script:v1,False,View and manage your forms in Google Drive
+https://www.googleapis.com/auth/forms.body,forms:v1,False,"See, edit, create, and delete all your Google Forms forms"
+https://www.googleapis.com/auth/forms.body.readonly,forms:v1,True,See all your Google Forms forms
+https://www.googleapis.com/auth/forms.currentonly,script:v1,False,View and manage forms that this application has been installed in
+https://www.googleapis.com/auth/forms.responses.readonly,forms:v1,True,See all responses to your Google Forms forms
+https://www.googleapis.com/auth/gmail.addons.current.action.compose,gmail:v1,False,Manage drafts and send emails when you interact with the add-on
+https://www.googleapis.com/auth/gmail.addons.current.message.action,gmail:v1,False,View your email messages when you interact with the add-on
+https://www.googleapis.com/auth/gmail.addons.current.message.metadata,gmail:v1,False,View your email message metadata when the add-on is running
+https://www.googleapis.com/auth/gmail.addons.current.message.readonly,gmail:v1,True,View your email messages when the add-on is running
+https://www.googleapis.com/auth/gmail.compose,gmail:v1,False,Manage drafts and send emails
+https://www.googleapis.com/auth/gmail.insert,gmail:v1,False,Add emails into your Gmail mailbox
+https://www.googleapis.com/auth/gmail.labels,gmail:v1,False,See and edit your email labels
+https://www.googleapis.com/auth/gmail.metadata,gmail:v1,False,"View your email message metadata such as labels and headers, but not the email body"
+https://www.googleapis.com/auth/gmail.modify,gmail:v1,False,"Read, compose, and send emails from your Gmail account"
+https://www.googleapis.com/auth/gmail.readonly,gmail:v1,True,View your email messages and settings
+https://www.googleapis.com/auth/gmail.send,gmail:v1,False,Send email on your behalf
+https://www.googleapis.com/auth/gmail.settings.basic,gmail:v1,False,"See, edit, create, or change your email settings and filters in Gmail"
+https://www.googleapis.com/auth/gmail.settings.sharing,gmail:v1,False,"Manage your sensitive mail settings, including who can manage your mail"
+https://www.googleapis.com/auth/groups,script:v1,False,View and manage your Google Groups
+https://www.googleapis.com/auth/keep,keep:v1,False,"See, edit, create and permanently delete all your Google Keep data"
+https://www.googleapis.com/auth/keep.readonly,keep:v1,True,View all your Google Keep data
+https://www.googleapis.com/auth/meetings.space.created,workspaceevents:v1,False,"Create, edit, and see information about your Google Meet conferences created by the app."
+https://www.googleapis.com/auth/meetings.space.readonly,workspaceevents:v1,True,Read information about any of your Google Meet conferences
+https://www.googleapis.com/auth/meetings.space.settings,meet:v2,False,"Edit, and see settings for all of your Google Meet calls."
+https://www.googleapis.com/auth/postmaster,gmailpostmastertools:v2,False,"Get email traffic metrics, manage domains, and manage domain users for the domains you have registered with Postmaster Tools"
+https://www.googleapis.com/auth/postmaster.domain,gmailpostmastertools:v2,False,View and manage the domains you have registered with Postmaster Tools
+https://www.googleapis.com/auth/postmaster.traffic.readonly,gmailpostmastertools:v2,True,Get email traffic metrics for the domains you have registered with Postmaster Tools
+https://www.googleapis.com/auth/postmaster.user,gmailpostmastertools:v2,False,View and manage users for the domains you have registered with Postmaster Tools
+https://www.googleapis.com/auth/presentations,slides:v1,False,"See, edit, create, and delete all your Google Slides presentations"
+https://www.googleapis.com/auth/presentations.readonly,slides:v1,True,See all your Google Slides presentations
+https://www.googleapis.com/auth/script.deployments,script:v1,False,Create and update Google Apps Script deployments
+https://www.googleapis.com/auth/script.deployments.readonly,script:v1,True,View Google Apps Script deployments
+https://www.googleapis.com/auth/script.metrics,script:v1,False,View Google Apps Script project's metrics
+https://www.googleapis.com/auth/script.processes,script:v1,False,View Google Apps Script processes
+https://www.googleapis.com/auth/script.projects,script:v1,False,Create and update Google Apps Script projects
+https://www.googleapis.com/auth/script.projects.readonly,script:v1,True,View Google Apps Script projects
+https://www.googleapis.com/auth/spreadsheets,slides:v1,False,"See, edit, create, and delete all your Google Sheets spreadsheets"
+https://www.googleapis.com/auth/spreadsheets.readonly,slides:v1,True,See all your Google Sheets spreadsheets
+https://www.googleapis.com/auth/tasks,tasks:v1,False,"Create, edit, organize, and delete all your tasks"
+https://www.googleapis.com/auth/tasks.readonly,tasks:v1,True,View your tasks
+https://www.googleapis.com/auth/user.addresses.read,people:v1,True,View your street addresses
+https://www.googleapis.com/auth/user.birthday.read,people:v1,True,See and download your exact date of birth
+https://www.googleapis.com/auth/user.emails.read,people:v1,True,See and download all of your Google Account email addresses
+https://www.googleapis.com/auth/user.gender.read,people:v1,True,See your gender
+https://www.googleapis.com/auth/user.organization.read,people:v1,True,"See your education, work history and org info"
+https://www.googleapis.com/auth/user.phonenumbers.read,people:v1,True,See and download your personal phone numbers
+https://www.googleapis.com/auth/userinfo.email,script:v1,True,See your primary Google Account email address
+https://www.googleapis.com/auth/userinfo.profile,people:v1,True,"See your personal info, including any personal info you've made publicly available"

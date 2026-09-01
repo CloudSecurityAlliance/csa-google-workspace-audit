@@ -1,0 +1,32 @@
+# ---- Credentials. Nothing in these shapes is ever committed. ----
+# A Google service-account key downloads as <project-id>-<12 hex>.json — the shape
+# most likely to be added by accident, because it looks like ordinary project data.
+*-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f].json
+service-account*.json
+*service_account*.json
+credentials.json
+client_secret*.json
+token*.json
+*.pem
+*.p12
+.env
+.env.*
+
+# ---- Extracted tenant data. ----
+# Audit output is real user, group, sharing and mailbox-settings data for a live domain.
+# It is never committed, the same way csa-google-workspace refuses extracted document data.
+/out/
+/tenant-data/
+*.audit.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+*.egg-info/
+build/
+dist/
