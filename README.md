@@ -75,6 +75,11 @@ guarantee an MCP client does, and so that failures are legible rather than 403s.
   `settings.delegates.list`, `settings.forwardingAddresses.list` and `getAutoForwarding` — so the
   canonical mailbox-persistence audit is fully answerable read-only.
 - **Cloud Search contributes 24 of the 53 read-traps by itself** and is excluded.
+- **Reading Gmail settings costs domain-wide mailbox read.** The narrowest read-only scope
+  reaching `settings.filters.list` is `gmail.readonly`, which also reads every message body in
+  every mailbox; the alternative, `gmail.settings.basic`, can *write* filters. So the
+  mailbox-persistence audit and the mail-flow log are separable decisions — the latter needs no
+  Gmail scope at all. ([§10](analysis/API-SURFACE.md))
 
 ## What is here
 
@@ -96,9 +101,10 @@ guarantee an MCP client does, and so that failures are legible rather than 403s.
 
 ## Open questions
 
-- **Mail flow — "who sent and received what" — is not resolved.** Gmail message-level log events
-  do not appear in the Admin SDK Reports API. The likely answers are Vault and the Gmail BigQuery
-  log export, which is not a Discovery API at all.
+- **Mail flow is resolved: `reports.activities.list(applicationName="gmail")`** — the API
+  equivalent of console Email Log Search, under `admin.reports.audit.readonly`, needing no Gmail
+  scope and no impersonation. Still to probe: the licence gate, the retention window (~30 days),
+  and the event parameter names, which Discovery types generically.
 - **Admin roles assigned directly to a service account**, removing impersonation from the Admin
   SDK path. Believed to exist; not probed.
 - **12 methods declare no scope** in Discovery and need a live call.

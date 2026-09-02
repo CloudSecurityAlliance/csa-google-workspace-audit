@@ -151,8 +151,57 @@ done yet.**
   scoped the Admin SDK out and left it to this repo. Gmail and Calendar appear here only as
   *audit reads performed by impersonation*, which is a different credential model and a
   different tool surface.
-- **Mail flow — "who sent and received what."** Requested, and **not resolved by this pass.**
-  Admin SDK Reports `activities.list` covers admin, login, drive, calendar, token, groups, saml,
-  chrome and meet — but message-level Gmail log events do not appear in the Reports API. The
-  likely answers are Vault (`ediscovery.readonly`, 11 read methods, already Tier A) and the Gmail
-  log BigQuery export, which is not a Discovery API at all. **Open question, tracked.**
+- **Message content and e-discovery.** Scoped out 2026-09-01: the requirement is envelope
+  metadata only — who sent what to whom, when. That is `reports.activities.list` (§9), not Vault
+  and not mailbox reads. Vault stays Tier A but is not on the critical path.
+
+
+## 9. Mail flow — `reports.activities.list(applicationName="gmail")`
+
+**Corrects an earlier claim in this document that Gmail log events are absent from the Reports
+API. They are not.** `gmail` is one of 41 values in the `applicationName` enum of
+`activities.list` — though notably *not* one of the 22 accepted by `activities.watch`, so this
+feed is pollable but not subscribable.
+
+| | |
+|---|---|
+| Path | `admin/reports/v1/activity/users/{userKey}/applications/gmail` |
+| Scope | `admin.reports.audit.readonly` — **the only scope**, and already Tier A |
+| Domain-wide | `userKey=all` |
+| Filters | `startTime`, `endTime`, `eventName`, `filters`, `actorIpAddress`, `orgUnitID`, `groupIdFilter`, `statusFilter` |
+| Paging | `maxResults` + `pageToken` |
+| Extra | `includeSensitiveData` (boolean) |
+
+This is the API equivalent of the Admin console's Email Log Search, and it needs **no Gmail
+scope and no impersonation** — a tenant-level call under a read-only scope.
+
+**Four things Discovery cannot answer; probe before implementing.**
+
+1. **Licence gate.** Gmail log events are believed to require Enterprise Standard/Plus,
+   Education Standard/Plus or Enterprise Essentials Plus.
+2. **Retention window** — believed ~30 days, matching console Email Log Search. Longer history
+   means the Gmail BigQuery log export, which is not a Discovery API and is a separate
+   credential model.
+3. **Event and parameter names.** `events[].parameters` is typed generically, so the sender /
+   recipient / subject / message-id field names are not in the snapshot.
+4. **`includeSensitiveData` semantics** — what it unlocks, and whether it should ever be passed.
+
+Because pagination over a domain-wide time range is the whole ballgame here, this is where
+`csa-zendesk`'s finding applies: *a truncated result set presented as an answer is worse than an
+error.* Exhaustion must be explicit.
+
+## 10. Finding 5 — reading Gmail settings costs domain-wide mailbox read
+
+Missed in the first pass because these methods classify as `READ_SAFE` — they do accept a
+`.readonly` scope. The problem is which one.
+
+`settings.filters.list`, `settings.delegates.list`, `settings.forwardingAddresses.list` and
+`getAutoForwarding` accept exactly four scopes: `mail.google.com`, `gmail.modify`,
+`gmail.readonly`, `gmail.settings.basic`. There is no settings-only read scope. So:
+
+- `gmail.readonly` — read-only, **and reads every message body in every mailbox**.
+- `gmail.settings.basic` — settings-only, **and can create filters and forwarding rules**.
+
+Both are broad, in opposite directions. This is the §3 trap in a different shape, and it means
+**the mailbox-persistence audit and the mail-flow log are separable decisions**: §9 needs no
+Gmail scope at all. Deciding them separately is the whole point of noticing.
