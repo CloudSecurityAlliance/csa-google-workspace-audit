@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import textwrap
 import pathlib
 import sys
 
@@ -32,13 +33,27 @@ IN_SCOPE = {
     "chromemanagement", "chromepolicy", "meet", "script",
 }
 
+# Deliberately NOT on the phase-1 allowlist. Each entry is a decision with a reason,
+# not a gap - the scopes are still emitted, commented out, so re-adding one is a
+# visible edit rather than a rediscovery.
+DEFERRED = {
+    "gmail": (
+        "The narrowest read-only scope reaching settings.filters.list is gmail.readonly, "
+        "which also reads every message body in every mailbox (API-SURFACE.md #10). Mail "
+        "flow does not need it - reports.activities.list(applicationName=gmail) is covered "
+        "by admin.reports.audit.readonly. Deferred 2026-09-01 so the key file cannot read "
+        "mail. Re-adding buys the filter/forwarding/delegate persistence audit and nothing else."
+    ),
+}
+
 
 def main() -> int:
-    rows = [
-        r for r in csv.DictReader((ROOT / "analysis" / "operation-inventory.csv").open())
-        if r["api"] in IN_SCOPE
-    ]
+    allrows = list(csv.DictReader((ROOT / "analysis" / "operation-inventory.csv").open()))
+    rows = [r for r in allrows if r["api"] in IN_SCOPE and r["api"] not in DEFERRED]
     reads = [r for r in rows if r["class"].startswith("READ")]
+    deferred_reads = [
+        r for r in allrows if r["api"] in DEFERRED and r["class"].startswith("READ")
+    ]
 
     candidate = sorted({s for r in reads for s in r["readonly_scopes"].split() if s})
 
@@ -75,6 +90,16 @@ def main() -> int:
             fh.write(f"# {s}\n")
             for m in sorted(trapped[s]):
                 fh.write(f"#     reaches: {m}\n")
+        fh.write("\n# --- DEFERRED: in scope for the repo, off the phase-1 allowlist ---\n")
+        for api, why in sorted(DEFERRED.items()):
+            n = len([r for r in deferred_reads if r["api"] == api])
+            fh.write(f"#\n# {api}  ({n} read methods forgone)\n")
+            for line in textwrap.wrap(why, 86):
+                fh.write(f"#   {line}\n")
+            for sc in sorted({s for r in deferred_reads if r["api"] == api
+                              for s in r["readonly_scopes"].split()}):
+                fh.write(f"#   OFF: {sc}\n")
+
         fh.write("\n# --- COMMA-JOINED (minimal cover only) ---\n")
         fh.write("# " + ",".join(s for s, _ in cover) + "\n")
 

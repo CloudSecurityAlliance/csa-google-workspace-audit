@@ -28,6 +28,10 @@ what happened.
 
 Full per-API table and tiers: [`analysis/API-SURFACE.md`](analysis/API-SURFACE.md).
 
+**The phase-1 allowlist is 34 scopes, every one of them `.readonly`.** `gmail.readonly` is
+deliberately not among them ([ADR-001](DECISIONS-ADR/ADR-001.md)) — it reads every message body
+in every mailbox, and mail flow does not need it.
+
 ## Why this exists
 
 Fifth in the line after [`csa-skilljar`](https://github.com/CloudSecurityAlliance/csa-skilljar),
@@ -91,6 +95,7 @@ guarantee an MCP client does, and so that failures are legible rather than 403s.
 | `analysis/scope-catalogue.csv` | 175 scopes, each flagged read-only or not |
 | `analysis/dwd-scope-allowlist.txt` | **Generated.** Paste into the Admin console |
 | `docs/GOOGLE-SIDE-SETUP.md` | The operator's half: the four Google-side controls, and key custody |
+| `DECISIONS-ADR.md` | Decision log index; entries in `DECISIONS-ADR/` |
 | `scripts/fetch_specs.sh` | Re-fetches `specs/` |
 | `scripts/inventory.py` | Regenerates the inventory and the catalogue |
 | `scripts/scope_allowlist.py` | Regenerates the allowlist |
