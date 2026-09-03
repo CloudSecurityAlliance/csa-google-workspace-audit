@@ -17,14 +17,14 @@ what happened.
 
 ## Scope
 
-**709 methods across 26 Workspace APIs.** 388 of them mutate and **will never be implemented**.
+**709 methods across 26 Workspace APIs.** 390 of them mutate and **will never be implemented**.
 
 | Class | Methods | Disposition |
 |---|---:|---|
-| Reachable with a `.readonly` scope | 256 | Implement |
-| A read that needs a write-capable scope | 53 | Decide per case; 24 are Cloud Search, excluded |
+| Reachable with a `.readonly` scope | 255 | Implement |
+| A read that needs a write-capable scope | 52 | Decide per case; 24 are Cloud Search, excluded |
 | No scope declared in Discovery | 12 | Probe first |
-| Mutating | 388 | **Never implement** |
+| Mutating | 390 | **Never implement** |
 
 Full per-API table and tiers: [`analysis/API-SURFACE.md`](analysis/API-SURFACE.md).
 
@@ -78,7 +78,7 @@ guarantee an MCP client does, and so that failures are legible rather than 403s.
 - **Gmail is clean.** `gmail.readonly` reaches `settings.filters.list`,
   `settings.delegates.list`, `settings.forwardingAddresses.list` and `getAutoForwarding` — so the
   canonical mailbox-persistence audit is fully answerable read-only.
-- **Cloud Search contributes 24 of the 53 read-traps by itself** and is excluded.
+- **Cloud Search contributes 24 of the 52 read-traps by itself** and is excluded.
 - **Reading Gmail settings costs domain-wide mailbox read.** The narrowest read-only scope
   reaching `settings.filters.list` is `gmail.readonly`, which also reads every message body in
   every mailbox; the alternative, `gmail.settings.basic`, can *write* filters. So the
@@ -99,9 +99,11 @@ guarantee an MCP client does, and so that failures are legible rather than 403s.
 | `scripts/fetch_specs.sh` | Re-fetches `specs/` |
 | `scripts/inventory.py` | Regenerates the inventory and the catalogue |
 | `scripts/scope_allowlist.py` | Regenerates the allowlist |
+| `scripts/check_doc_claims.py` | Asserts every count in the prose still matches the generated data |
 
 ```bash
 ./scripts/fetch_specs.sh && python3 scripts/inventory.py && python3 scripts/scope_allowlist.py
+python3 scripts/check_doc_claims.py   # run before committing prose
 ```
 
 ## Open questions

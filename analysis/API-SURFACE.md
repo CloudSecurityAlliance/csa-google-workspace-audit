@@ -9,18 +9,18 @@ scopes.**
 
 ## 1. The one-line answer
 
-Of 709 methods across every Workspace-adjacent API: **388 mutate and will never be
-implemented**. Of the 321 that read, **256 are reachable with a scope Google itself labels
-`.readonly`** — those are the product. **53 are reads that can only be performed while holding a
+Of 709 methods across every Workspace-adjacent API: **390 mutate and will never be
+implemented**. Of the 319 that read, **255 are reachable with a scope Google itself labels
+`.readonly`** — those are the product. **52 are reads that can only be performed while holding a
 write-capable scope**, and they are the whole design problem. 12 declare no scope at all and
 need a live probe.
 
 | Class | Methods | Meaning |
 |---|---:|---|
-| `READ_SAFE` | 256 | Reachable holding only a `.readonly` scope. **Implement.** |
-| `READ_NEEDS_RW` | 53 | A read, but the narrowest scope that reaches it can also write. **Decide per case.** |
+| `READ_SAFE` | 255 | Reachable holding only a `.readonly` scope. **Implement.** |
+| `READ_NEEDS_RW` | 52 | A read, but the narrowest scope that reaches it can also write. **Decide per case.** |
 | `READ_NO_SCOPE` | 12 | Discovery declares no scope. **Probe before trusting.** |
-| `MUTATING` | 388 | Creates, updates, deletes. **Never implement.** |
+| `MUTATING` | 390 | Creates, updates, deletes. **Never implement.** |
 
 ## 2. Per-API breakdown
 
@@ -29,7 +29,7 @@ need a live probe.
 | `admin:directory_v1` | 128 | 41 | 5 | 0 | 82 | A |
 | `gmail:v1` | 79 | 30 | 0 | 0 | 49 | A |
 | `cloudidentity:v1` | 70 | 31 | 1 | 3 | 35 | A |
-| `drive:v3` | 64 | 27 | 3 | 0 | 34 | A |
+| `drive:v3` | 64 | 27 | 2 | 0 | 35 | A |
 | `chromemanagement:v1` | 58 | 37 | 0 | 5 | 16 | A |
 | `cloudsearch:v1` | 49 | 0 | 24 | 0 | 25 | **D — exclude** |
 | `calendar:v3` | 38 | 12 | 0 | 0 | 26 | A |
@@ -39,7 +39,7 @@ need a live probe.
 | `sheets:v4` | 17 | 3 | 2 | 0 | 12 | D — sibling repo |
 | `script:v1` | 16 | 6 | 3 | 0 | 7 | B |
 | `workspaceevents:v1` | 15 | 3 | 0 | 4 | 8 | C |
-| `chromepolicy:v1` | 14 | 3 | 0 | 0 | 11 | A |
+| `chromepolicy:v1` | 14 | 2 | 0 | 0 | 12 | A |
 | `gmailpostmastertools:v2` | 14 | 2 | 5 | 0 | 7 | B |
 | `tasks:v1` | 14 | 4 | 0 | 0 | 10 | D |
 | `alertcenter:v1beta1` | 11 | 0 | 5 | 0 | 6 | **B — no read-only scope exists** |
@@ -121,7 +121,7 @@ never go on the allowlist.
 
 Every Cloud Search read requires `cloud_search` or a `cloud_search.*` scope, none of which are
 read-only, and several of which (`cloud_search.indexing`, `cloud_search.settings`) can rewrite a
-search index. It contributes 24 of the 53 traps by itself. Unless CSA actually runs Cloud Search,
+search index. It contributes 24 of the 52 traps by itself. Unless CSA actually runs Cloud Search,
 excluding it removes nearly half the problem for no loss.
 
 ## 6. Finding 4 — 12 methods declare no scope in Discovery
