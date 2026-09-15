@@ -3,7 +3,7 @@
 ```
 project_tracker_base: CINO Project Tracker:appf7fRQUvY9Iy7sL
 project_tracker_table: Projects:tblchmbxSAavvJKaY
-project_tracker_record: TODO - not yet created
+project_tracker_record: csa-google-workspace-audit:recdsjRkPxCu535h2
 project_source: github:CloudSecurityAlliance-Internal/CINO-Projects/projects/CloudSecurityAlliance/csa-google-workspace-audit
 ```
 
