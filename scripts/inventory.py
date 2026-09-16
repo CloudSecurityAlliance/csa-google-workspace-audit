@@ -75,7 +75,7 @@ def walk(node: dict, api: str, ver: str, out: list, trail: tuple = ()) -> None:
 def main() -> int:
     rows: list[dict] = []
     catalogue: dict[str, dict[str, str]] = {}
-    provenance: list[tuple[str, str, str, str]] = []
+    provenance: list[tuple[str, str, str, str, str]] = []
 
     for path in sorted(SPECS.glob("*.json")):
         doc = json.loads(path.read_text())
@@ -88,12 +88,21 @@ def main() -> int:
                 "description": meta.get("description", ""),
                 "api": f"{api}:{ver}",
             }
+        # Two digests. The raw sha256 identifies the exact bytes committed here; it is NOT a
+        # drift signal, because Google's Discovery service serializes object keys in a
+        # non-deterministic order, so an unchanged document re-fetches to different bytes.
+        # The canonical digest - sorted keys, no insignificant whitespace - is stable across
+        # fetches and is the one to compare when asking "has this actually changed".
+        canonical = hashlib.sha256(
+            json.dumps(doc, sort_keys=True, separators=(",", ":")).encode()
+        ).hexdigest()
         provenance.append(
             (
                 path.name,
                 f"{api}:{ver}",
                 doc.get("revision", "?"),
                 hashlib.sha256(path.read_bytes()).hexdigest(),
+                canonical,
             )
         )
 
@@ -114,7 +123,7 @@ def main() -> int:
 
     with (ANALYSIS / "provenance.csv").open("w", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["file", "api", "revision", "sha256"])
+        w.writerow(["file", "api", "revision", "sha256", "canonical_sha256"])
         w.writerows(sorted(provenance))
 
     # ---- summary ----

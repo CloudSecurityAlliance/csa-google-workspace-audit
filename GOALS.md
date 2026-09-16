@@ -41,9 +41,9 @@ Everything below follows from that.
 
 | Goal | Success metric |
 |---|---|
-| **Read-only by construction, not by policy** | The 390 mutating methods are absent from the client, not gated in it. There is no write path to disable, no gate to misconfigure, and no wrapper to bypass |
+| **Read-only by construction, not by policy** | The 394 mutating methods are absent from the client, not gated in it. There is no write path to disable, no gate to misconfigure, and no wrapper to bypass |
 | **The allowlist stays minimal and justified** | Every scope on the phase-1 allowlist is `.readonly` and has a recorded reason. 34 today. A scope is added by ADR or not at all |
-| **Implement the 255 reachable methods** | The methods reachable with a `.readonly` scope, as classified in [`analysis/API-SURFACE.md`](analysis/API-SURFACE.md). None are built yet |
+| **Implement the 260 reachable methods** | The methods reachable with a `.readonly` scope, as classified in [`analysis/API-SURFACE.md`](analysis/API-SURFACE.md). None are built yet |
 | **Probe the 12 with no declared scope** | Discovery declares no scope for twelve methods. Probe before assuming either way |
 | **A second pair of eyes on the allowlist** | The allowlist is a Workspace super-admin change and a single reviewer is the wrong number for it |
 
@@ -74,7 +74,7 @@ Everything below follows from that.
 
 Named so they are decisions rather than drift.
 
-- **The 390 mutating methods. Ever.** Not gated, not off-by-default, not behind a profile — absent.
+- **The 394 mutating methods. Ever.** Not gated, not off-by-default, not behind a profile — absent.
 - **`gmail.readonly` in phase 1** ([ADR-001](DECISIONS-ADR/ADR-001.md)). It reads every message body
   in every mailbox, and the stated mail requirement — envelope metadata, the equivalent of Email Log
   Search — needs only `admin.reports.audit.readonly`, with no Gmail scope and no impersonation.
@@ -90,7 +90,7 @@ Named so they are decisions rather than drift.
    anyone reasons "the policy blocks it, so we can widen the scope", both controls are gone.
 3. **`gmail.readonly` arrives quietly** to enable one convenient feature, and every message body in
    CSA becomes reachable by whoever holds the key.
-4. **The classification goes stale.** 709 methods across 26 APIs were classified on one date. Google
+4. **The classification goes stale.** 718 methods across 26 APIs were classified on one date. Google
    ships. A method that became mutating, or a new one that arrived, is invisible until re-probed.
 5. **The service-account key is treated as a secret rather than as a credential.** Possession mints
    tokens for every scope on the allowlist, against every user in the tenant, with no further check.
@@ -99,7 +99,7 @@ Named so they are decisions rather than drift.
 
 - **CSA** — the security questions about its own tenant become answerable by an agent rather than by
   clicking through the admin console, which is why they currently go unanswered.
-- **The community** — public, and the read/write classification of 709 Workspace methods is useful
+- **The community** — public, and the read/write classification of 718 Workspace methods is useful
   to anyone auditing a tenant, whether or not they run this client.
 - **The fleet** — this is where the rule *enforcement an AI can edit is not enforcement* was reached
   by building rather than by argument.

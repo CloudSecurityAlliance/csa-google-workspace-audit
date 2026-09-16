@@ -17,14 +17,14 @@ what happened.
 
 ## Scope
 
-**709 methods across 26 Workspace APIs.** 390 of them mutate and **will never be implemented**.
+**718 methods across 26 Workspace APIs.** 394 of them mutate and **will never be implemented**.
 
 | Class | Methods | Disposition |
 |---|---:|---|
-| Reachable with a `.readonly` scope | 255 | Implement |
+| Reachable with a `.readonly` scope | 260 | Implement |
 | A read that needs a write-capable scope | 52 | Decide per case; 24 are Cloud Search, excluded |
 | No scope declared in Discovery | 12 | Probe first |
-| Mutating | 390 | **Never implement** |
+| Mutating | 394 | **Never implement** |
 
 Full per-API table and tiers: [`analysis/API-SURFACE.md`](analysis/API-SURFACE.md).
 
@@ -89,12 +89,13 @@ guarantee an MCP client does, and so that failures are legible rather than 403s.
 
 | Path | What |
 |---|---|
-| `specs/` | 26 upstream Discovery snapshots + `PROVENANCE.md` (URLs, revisions, sha256) |
+| `specs/` | 26 upstream Discovery snapshots + `PROVENANCE.md` (URLs, revisions, raw + canonical sha256, bytes) |
 | `analysis/API-SURFACE.md` | **Start here.** The enumeration, the tiers, the four findings |
-| `analysis/operation-inventory.csv` | 709 rows, one per method, with scopes and classification |
+| `analysis/operation-inventory.csv` | 718 rows, one per method, with scopes and classification |
 | `analysis/scope-catalogue.csv` | 175 scopes, each flagged read-only or not |
 | `analysis/dwd-scope-allowlist.txt` | **Generated.** Paste into the Admin console |
 | `docs/GOOGLE-SIDE-SETUP.md` | The operator's half: the four Google-side controls, and key custody |
+| `docs/OFFICIAL-MCP-SERVERS.md` | **Does Google already ship this?** Probed 2026-09-16: 8 first-party MCP servers exist, none touch the admin surface |
 | `DECISIONS-ADR.md` | Decision log index; entries in `DECISIONS-ADR/` |
 | `scripts/fetch_specs.sh` | Re-fetches `specs/` |
 | `scripts/inventory.py` | Regenerates the inventory and the catalogue |

@@ -3,8 +3,8 @@
 
 # --- MINIMAL COVER (34 scopes, reaches every read-only-reachable method) ---
 https://www.googleapis.com/auth/drive.readonly    # covers 26 methods
-https://www.googleapis.com/auth/chrome.management.reports.readonly    # covers 16 methods
-https://www.googleapis.com/auth/meetings.space.readonly    # covers 15 methods
+https://www.googleapis.com/auth/chrome.management.reports.readonly    # covers 19 methods
+https://www.googleapis.com/auth/meetings.space.readonly    # covers 17 methods
 https://www.googleapis.com/auth/cloud-identity.groups.readonly    # covers 13 methods
 https://www.googleapis.com/auth/calendar.readonly    # covers 11 methods
 https://www.googleapis.com/auth/ediscovery.readonly    # covers 11 methods
