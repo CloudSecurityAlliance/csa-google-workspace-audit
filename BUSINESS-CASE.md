@@ -30,7 +30,7 @@ matters.
 **It is an Operations360 input.** The estate CSA runs on is one of the six subject-scoped systems;
 this is the Workspace slice of its evidence.
 
-**The classification is reusable regardless of the client.** 709 methods across 26 Workspace APIs,
+**The classification is reusable regardless of the client.** 718 methods across 26 Workspace APIs,
 each marked read-safe, mutating, or read-requiring-write-authority. That analysis holds whether or
 not anyone runs this code.
 
@@ -51,7 +51,7 @@ and every file in the tenant.
 
 The difference is what constrains it:
 
-- **390 mutating methods are absent from the client**, not gated in it. No write path to disable.
+- **394 mutating methods are absent from the client**, not gated in it. No write path to disable.
 - **Read-only is enforced on Google's side**, in a domain-wide-delegation scope allowlist that only a
   Workspace super admin can edit. Google refuses to mint a token for an unlisted scope, so a client
   rewritten to request `gmail.modify` gets nothing back.
@@ -65,7 +65,7 @@ work is making the reads safe to hand to an agent.**
 ## Operational burden
 
 Low and honest. No service, no listener, no deployment, no stored data — a library and a local stdio
-server. The recurring costs are re-running the 709-method classification when Google ships, and
+server. The recurring costs are re-running the 718-method classification when Google ships, and
 reviewing the scope allowlist when someone wants a new read. Both are tracked in `TODO.md`.
 
 ## AI enablement
@@ -73,4 +73,4 @@ reviewing the scope allowlist when someone wants a new read. Both are tracked in
 This project exists *because* of AI enablement rather than merely using it: the reason to make the
 tenant queryable is that an agent can then ask the follow-up question, and the one after that,
 without a human composing each console query. The classification work itself was AI-performed against
-Google's Discovery documents, which is what made enumerating 709 methods proportionate at all.
+Google's Discovery documents, which is what made enumerating 718 methods proportionate at all.

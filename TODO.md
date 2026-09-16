@@ -15,15 +15,19 @@ Created 2026-09-16.
 
 ## Drift
 
-- [ ] **Nothing watches the upstream surface** —
+- [ ] **Nothing watches the upstream surface** *automatically* —
   [CINO-PE #49](https://github.com/CloudSecurityAlliance-Internal/CINO-Platform-Engineering/issues/49).
-  The 709-method read/write classification was taken on a single date against a vendor that ships. A
-  method that became mutating, or a new one that arrived, is invisible until re-probed. Re-running
-  the classification and diffing it is the whole job.
+  Run once by hand on 2026-09-16 ([API-SURFACE §11](analysis/API-SURFACE.md#11-finding-6--the-first-re-classification-found-no-scope-change-anywhere)):
+  23 of 26 revisions moved, 9 methods arrived, **0 scope arrays changed**, allowlist unchanged. The
+  diff is mechanical and wants to be CI, not a person remembering. Compare *canonical* digests —
+  Google reorders JSON keys, so raw sha256 reports drift that is not there.
+- [ ] **Re-probe for an official Google admin MCP server.** Absent as of 2026-09-16
+  ([`docs/OFFICIAL-MCP-SERVERS.md`](docs/OFFICIAL-MCP-SERVERS.md)); `adminmcp.googleapis.com`
+  appearing would change the build/buy case for this repo.
 
 ## Build
 
-- [ ] **Implement the 255 methods reachable with a `.readonly` scope.** None are built. Ordering and
+- [ ] **Implement the 260 methods reachable with a `.readonly` scope.** None are built. Ordering and
   rationale in [`GOALS.md`](GOALS.md).
 - [ ] **Probe the 12 methods for which Discovery declares no scope.** Probe before assuming either way.
 - [ ] **Decide the 52 case-by-case methods** — reads that require a write-capable scope. 24 are Cloud

@@ -17,7 +17,7 @@ key is a bearer credential — possession alone mints tokens.
 
 ## Rules that are not negotiable
 
-**Never add a mutating method.** The 390 mutating methods of the 709 classified in
+**Never add a mutating method.** The 394 mutating methods of the 718 classified in
 [`analysis/API-SURFACE.md`](analysis/API-SURFACE.md) are *absent by construction*, not gated. There
 is no write path to disable and no gate to misconfigure. If a task appears to require one, the task
 is wrong — say so rather than implementing it.
@@ -67,4 +67,4 @@ internal CINO-Platform-Engineering repo and are not restated here.
 ## State
 
 **API surface enumerated; nothing implemented.** There is no `src/`. Do not describe any capability
-as working. 255 methods are reachable with a `.readonly` scope and none are built.
+as working. 260 methods are reachable with a `.readonly` scope and none are built.

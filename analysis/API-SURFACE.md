@@ -4,23 +4,23 @@
 mechanically from the Discovery snapshots in `specs/` by `scripts/inventory.py`; nothing is
 transcribed from Google's prose. Re-run the script rather than editing the numbers.
 
-Generated from 26 Discovery documents fetched 2026-09-01. **709 methods, 175 distinct OAuth
+Generated from 26 Discovery documents fetched 2026-09-16. **718 methods, 175 distinct OAuth
 scopes.**
 
 ## 1. The one-line answer
 
-Of 709 methods across every Workspace-adjacent API: **390 mutate and will never be
-implemented**. Of the 319 that read, **255 are reachable with a scope Google itself labels
+Of 718 methods across every Workspace-adjacent API: **394 mutate and will never be
+implemented**. Of the 324 that read, **260 are reachable with a scope Google itself labels
 `.readonly`** — those are the product. **52 are reads that can only be performed while holding a
 write-capable scope**, and they are the whole design problem. 12 declare no scope at all and
 need a live probe.
 
 | Class | Methods | Meaning |
 |---|---:|---|
-| `READ_SAFE` | 255 | Reachable holding only a `.readonly` scope. **Implement.** |
+| `READ_SAFE` | 260 | Reachable holding only a `.readonly` scope. **Implement.** |
 | `READ_NEEDS_RW` | 52 | A read, but the narrowest scope that reaches it can also write. **Decide per case.** |
 | `READ_NO_SCOPE` | 12 | Discovery declares no scope. **Probe before trusting.** |
-| `MUTATING` | 390 | Creates, updates, deletes. **Never implement.** |
+| `MUTATING` | 394 | Creates, updates, deletes. **Never implement.** |
 
 ## 2. Per-API breakdown
 
@@ -30,12 +30,12 @@ need a live probe.
 | `gmail:v1` | 79 | 30 | 0 | 0 | 49 | A |
 | `cloudidentity:v1` | 70 | 31 | 1 | 3 | 35 | A |
 | `drive:v3` | 64 | 27 | 2 | 0 | 35 | A |
-| `chromemanagement:v1` | 58 | 37 | 0 | 5 | 16 | A |
+| `chromemanagement:v1` | 61 | 40 | 0 | 5 | 16 | A |
 | `cloudsearch:v1` | 49 | 0 | 24 | 0 | 25 | **D — exclude** |
 | `calendar:v3` | 38 | 12 | 0 | 0 | 26 | A |
 | `vault:v1` | 33 | 11 | 1 | 0 | 21 | A |
+| `meet:v2` | 24 | 17 | 0 | 0 | 7 | A |
 | `people:v1` | 24 | 11 | 0 | 0 | 13 | D |
-| `meet:v2` | 18 | 15 | 0 | 0 | 3 | A |
 | `sheets:v4` | 17 | 3 | 2 | 0 | 12 | D — sibling repo |
 | `script:v1` | 16 | 6 | 3 | 0 | 7 | B |
 | `workspaceevents:v1` | 15 | 3 | 0 | 4 | 8 | C |
@@ -209,3 +209,42 @@ Missed in the first pass because these methods classify as `READ_SAFE` — they 
 Both are broad, in opposite directions. This is the §3 trap in a different shape, and it means
 **the mailbox-persistence audit and the mail-flow log are separable decisions**: §9 needs no
 Gmail scope at all. Deciding them separately is the whole point of noticing.
+
+## 11. Finding 6 — the first re-classification found no scope change anywhere
+
+Re-fetched all 26 Discovery documents on **2026-09-16**, 15 days after the original snapshot, and
+diffed method-by-method. This is the first execution of the drift check the classification always
+needed, and the result is the one that matters:
+
+**No existing method's `scopes` array changed. None. 0 of 709.** No method changed HTTP verb, and
+none was removed. The read/write classification taken on 2026-09-01 held exactly.
+
+What did move: **23 of 26 APIs advanced their `revision`**, and **9 methods were added**.
+
+| Added method | Verb | Scopes | Class |
+|---|---|---|---|
+| `chromemanagement.customers.reports.findSaasUsage` | GET | `chrome.management.reports.readonly` | READ_SAFE |
+| `chromemanagement.customers.reports.findSaasUsageBrowsers` | GET | `chrome.management.reports.readonly` | READ_SAFE |
+| `chromemanagement.customers.reports.findSaasUsageProfiles` | GET | `chrome.management.reports.readonly` | READ_SAFE |
+| `meet.spaces.members.get` | GET | `meetings.space.created`, `meetings.space.readonly` | READ_SAFE |
+| `meet.spaces.members.list` | GET | `meetings.space.created`, `meetings.space.readonly` | READ_SAFE |
+| `meet.spaces.members.create` | POST | `meetings.space.created` | MUTATING |
+| `meet.spaces.members.patch` | PATCH | `meetings.space.created` | MUTATING |
+| `meet.spaces.members.batchUpdate` | POST | `meetings.space.created` | MUTATING |
+| `meet.spaces.members.delete` | DELETE | `meetings.space.created` | MUTATING |
+
+Totals moved 709 → 718, `READ_SAFE` 255 → 260, `MUTATING` 390 → 394. `READ_NEEDS_RW` (52),
+`READ_NO_SCOPE` (12) and the 175-scope catalogue were unchanged.
+
+**The allowlist did not change.** All 9 new methods fall under scopes already on the phase-1 list
+(`chrome.management.reports.readonly`, `meetings.space.readonly`) or under a mutating scope that
+was never on it. Still 34 scopes, still all `.readonly`. A surface that grows without needing a
+new grant is the good case; the check exists for the case where it does not.
+
+**What this run is evidence for, and what it is not.** Fifteen days is one sample. It establishes
+that the diff is cheap and mechanical — `./scripts/fetch_specs.sh && python3 scripts/inventory.py`
+and compare — not that Google's scope arrays are stable. The thing being watched for is a method
+that gains a write-capable scope or loses its read-only one, and a single clean run says nothing
+about whether that will happen. See `specs/PROVENANCE.md` for the per-file digests, and note the
+raw-sha256 trap recorded there: 26 of 26 files re-fetched to different bytes, but only 23 had
+actually changed.

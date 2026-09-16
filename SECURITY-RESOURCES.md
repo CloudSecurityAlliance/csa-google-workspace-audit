@@ -48,7 +48,7 @@ The phase-1 allowlist is 34 scopes, every one `.readonly`, each with a recorded 
 | **No branch protection, no required CI gates, no SHA-pinned actions.** Public since 2026-09-15 with none of `PUBLIC-GITHUB-REPO-STANDARDS.md` applied | Open — tracked in `TODO.md` | Kurt Seifried |
 | **Allowlist drift is undetectable from here.** The live allowlist lives in the Google admin console; nothing in this repo can compare it to the documented one | Open — no mechanism designed | Kurt Seifried |
 | **One reviewer for allowlist changes.** A super-admin change with a single approver | Open | Kurt Seifried |
-| **The classification is a point-in-time snapshot.** 709 methods classified on one date; a method that becomes mutating is invisible until re-probed | Open — [CINO-PE #49](https://github.com/CloudSecurityAlliance-Internal/CINO-Platform-Engineering/issues/49) | Kurt Seifried |
+| **The classification is a point-in-time snapshot.** 718 methods classified on one date; a method that becomes mutating is invisible until re-probed | Open — [CINO-PE #49](https://github.com/CloudSecurityAlliance-Internal/CINO-Platform-Engineering/issues/49) | Kurt Seifried |
 | **Four APIs have no read-only scope at all.** Reading third-party OAuth grants needs the scope that disables two-step verification domain-wide | Accepted — those reads are not offered | Kurt Seifried |
 
 ## Data classification
