@@ -7,7 +7,7 @@ Created 2026-09-16.
 
 ## Repo standards
 
-- [ ] **Apply [`PUBLIC-GITHUB-REPO-STANDARDS.md`](https://github.com/CloudSecurityAlliance-Internal/CINO-Platform-Engineering/blob/main/PUBLIC-GITHUB-REPO-STANDARDS.md).**
+- [ ] **Apply [`PUBLIC-GITHUB-REPO-STANDARDS.md`](https://github.com/CloudSecurityAlliance-Internal/CINO-Engineering/blob/main/PUBLIC-GITHUB-REPO-STANDARDS.md).**
   This repository went public on 2026-09-15 with none of it configured: no branch protection, no
   required CI gates, no SHA-pinned actions. It has no CI at all yet.
 - [ ] **Decide vendored versus fetched Discovery snapshots.** ~5 MB of Google's own specs live in
@@ -16,7 +16,7 @@ Created 2026-09-16.
 ## Drift
 
 - [ ] **Nothing watches the upstream surface** *automatically* —
-  [CINO-PE #49](https://github.com/CloudSecurityAlliance-Internal/CINO-Platform-Engineering/issues/49).
+  [CINO-PE #49](https://github.com/CloudSecurityAlliance-Internal/CINO-Engineering/issues/49).
   Run once by hand on 2026-09-16 ([API-SURFACE §11](analysis/API-SURFACE.md#11-finding-6--the-first-re-classification-found-no-scope-change-anywhere)):
   23 of 26 revisions moved, 9 methods arrived, **0 scope arrays changed**, allowlist unchanged. The
   diff is mechanical and wants to be CI, not a person remembering. Compare *canonical* digests —

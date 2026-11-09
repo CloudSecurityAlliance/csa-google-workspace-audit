@@ -62,7 +62,7 @@ work goes in [`TODO.md`](TODO.md), one line per item, with detail in the linked 
 
 Fleet-wide standards — library-first, one fail-closed seam, capability coverage within a declared
 scope, upstream drift detection, guards proven to fail — are in `surfaces/mcp/GOALS.md` in the
-internal CINO-Platform-Engineering repo and are not restated here.
+internal CINO-Engineering repo and are not restated here.
 
 ## State
 
