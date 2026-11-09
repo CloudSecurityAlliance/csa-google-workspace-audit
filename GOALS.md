@@ -2,7 +2,7 @@
 
 Shared goals for CSA's MCP server fleet — library-first, local stdio, one fail-closed seam at the
 data boundary, offline-testable — are stated once in the fleet roster (`surfaces/mcp/ROSTER.md` in
-the internal CINO-Platform-Engineering repo) and are not restated here. This project sits on the
+the internal CINO-Engineering repo) and are not restated here. This project sits on the
 same spine as its four predecessors: `Backend (Protocol) → PolicyBackend → Client → mcp/_tools/*`.
 
 **One thing here is not shared, and it is the reason this file exists.**
