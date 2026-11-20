@@ -11,6 +11,8 @@ A Python library and local stdio MCP server for **read-only auditing of a Google
 tenant** — who exists, who is privileged, what is shared with whom, who can read whose mail, and
 what happened.
 
+Not affiliated with or endorsed by Google. Google and Google Workspace are trademarks of Google LLC.
+
 > **Status: API surface enumerated. Nothing implemented.** There is no `src/`. This repository
 > currently holds the upstream Discovery snapshots, the operation inventory, the read/write
 > classification, and the generated scope allowlist. Do not describe any feature below as working.
